@@ -16,10 +16,12 @@
  */			
 class Solution {
 	/**
+	 * 返回连续指之和等于target的键值
+	 *
 	 * @param array $nums
 	 * @param int $target
 	 */
-	public function towSum(array $nums, int $target) {
+	public function twoContinuitySum(array $nums, int $target) {
 		$targetArray = [];
 		foreach($nums as $key => $num) {
 			if($key+1 < count($nums) && $num+$nums[$key+1] == $target) {
@@ -27,6 +29,26 @@ class Solution {
 			}	
 		}
 		return $targetArray;
+	}
+
+	/**
+	 * 返回任意两数之和等于目标值的键值，且要求时间复杂度小于O(n2)
+	 *
+	 * @author Shanla
+	 * @param array $sums
+	 * @param int $target
+	 */
+	public function twoSum(array $sums, int $target)
+	{
+		$tempArray = [];
+		foreach($nums as $key => $num) {
+			$tempArray[$key] = $target-$num;
+		}
+		foreach($nums as $key => $num) {
+			if(in_array($num, $tempArray)) {
+				
+			}
+		}
 	}
 }
 
