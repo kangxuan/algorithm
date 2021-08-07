@@ -51,8 +51,8 @@ class Solution {
 				foreach($keyArray[$num] as $keyArr) {
 					$temp = [$key, $keyArr];
 					sort($temp);
-                    if (!in_array($temp, $targetArray)) {
-                        $targetArray[] = $temp;
+		            if (!in_array($temp, $targetArray)) {
+						$targetArray[] = $temp;
                     }
 				}
 			}
