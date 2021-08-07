@@ -38,20 +38,29 @@ class Solution {
 	 * @param array $sums
 	 * @param int $target
 	 */
-	public function twoSum(array $sums, int $target)
+	public function twoSum(array $nums, int $target)
 	{
-		$tempArray = [];
+		$targetArray = $reduceArray = $keyArray = [];
 		foreach($nums as $key => $num) {
-			$tempArray[$key] = $target-$num;
+			$reduceArray[$key] = $target - $num;
+			$keyArray[$num][] = $key;
 		}
-		foreach($nums as $key => $num) {
-			if(in_array($num, $tempArray)) {
-				
+
+		foreach($reduceArray as $key => $num) {
+			if(isset($keyArray[$num]) && !empty($keyArray[$num])) {
+				foreach($keyArray[$num] as $keyArr) {
+					$temp = [$key, $keyArr];
+					sort($temp);
+                    if (!in_array($temp, $targetArray)) {
+                        $targetArray[] = $temp;
+                    }
+				}
 			}
 		}
+		return $targetArray;
 	}
 }
 
 $object = new Solution();
-$result = $object->towSum([2,7,11,15], 9);
+$result = $object->twoSum([2,7,2,7,11,15], 9);
 print_r($result);
